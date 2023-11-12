@@ -7,3 +7,9 @@ Route::get('/', function () {
         'title' => 'STYLE STOCKROOM'
     ]);
 });
+
+Route::get('/contact', function () {
+    return view('contact', [
+        'title' => 'STYLE STOCKROOM | Contact'
+    ]);
+});
