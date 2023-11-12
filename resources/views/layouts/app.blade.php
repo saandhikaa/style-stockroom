@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    @include('partials.navbar')
+    
     <main>
         @yield('main')
     </main>
