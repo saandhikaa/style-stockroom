@@ -11,7 +11,7 @@
 <body>
     @include('partials.navbar')
     
-    <main>
+    <main class="p-5">
         @yield('main')
     </main>
 </body>
