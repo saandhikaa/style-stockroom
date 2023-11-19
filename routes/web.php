@@ -1,10 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Product;
 
 Route::get('/', function () {
     return view('home', [
         'title' => 'STYLE STOCKROOM'
+    ]);
+});
+
+Route::get('/product', function () {
+    return view('product', [
+        'title' => 'STYLE STOCKROOM | All Product',
+        'products' => Product::productList()
     ]);
 });
 
