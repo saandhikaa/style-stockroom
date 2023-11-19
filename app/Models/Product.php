@@ -39,4 +39,12 @@ class Product {
     public static function productList() {
         return self::$products;
     }
+    
+    public static function productDetail ($slug) {
+        foreach (self::$products as $product) {
+            if ($product["slug"] == $slug) {
+                return $product;
+            }
+        }
+    }
 }
