@@ -16,6 +16,13 @@ Route::get('/product', function () {
     ]);
 });
 
+Route::get('/product/{slug}', function ($slug) {
+    return view('detail', [
+        'title' => 'STYLE STOCKROOM | Product detail',
+        'products' => Product::productDetail($slug)
+    ]);
+});
+
 Route::get('/contact', function () {
     return view('contact', [
         'title' => 'STYLE STOCKROOM | Contact'
