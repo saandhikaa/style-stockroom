@@ -7,6 +7,7 @@ class Product {
         [
             "productID" => "001",
             "name" => "Vintage Leather Jacket",
+            "slug" => "vintage-leather-jacket",
             "category" => "Outerwear",
             "price" => "IDR 2,250,000",
             "description" => "A stylish vintage leather jacket for a timeless look.",
@@ -16,6 +17,7 @@ class Product {
         [
             "productID" => "002",
             "name" => "Slim Fit Jeans",
+            "slug" => "slim-fit-jeans",
             "category" => "Pants",
             "price" => "IDR 1,200,000",
             "description" => "Comfortable and fashionable slim fit jeans.",
@@ -25,6 +27,7 @@ class Product {
         [
             "productID" => "003",
             "name" => "Silk Scarf",
+            "slug" => "silk-scraf",
             "category" => "Accessories",
             "price" => "IDR 675,000",
             "description" => "Elegant silk scarf with a beautiful pattern.",
