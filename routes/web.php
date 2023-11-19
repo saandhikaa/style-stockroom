@@ -16,6 +16,6 @@ Route::get('/contact', function () {
 
 Route::get('/about', function () {
     return view('about', [
-        'title' => 'STYLE STOCKROOM | Contact'
+        'title' => 'STYLE STOCKROOM | About'
     ]);
 });
