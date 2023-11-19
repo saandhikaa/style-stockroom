@@ -32,4 +32,8 @@ class Product {
             "colors" => "Red, Blue, Green, Yellow"
         ]
     ];
+    
+    public static function productList() {
+        return self::$products;
+    }
 }
