@@ -37,7 +37,7 @@ class Product {
     ];
     
     public static function productList() {
-        return self::$products;
+        return collect(self::$products);
     }
     
     public static function productDetail ($slug) {
