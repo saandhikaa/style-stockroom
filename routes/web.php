@@ -19,7 +19,7 @@ Route::get('/product', function () {
 Route::get('/product/{slug}', function ($slug) {
     return view('detail', [
         'title' => 'STYLE STOCKROOM | Product detail',
-        'products' => Product::productDetail($slug)
+        'product' => Product::productDetail($slug)
     ]);
 });
 
