@@ -41,10 +41,7 @@ class Product {
     }
     
     public static function productDetail ($slug) {
-        foreach (self::$products as $product) {
-            if ($product["slug"] == $slug) {
-                return $product;
-            }
-        }
+        $products = static::productList();
+        return $products->firstWhere('slug', $slug);
     }
 }
