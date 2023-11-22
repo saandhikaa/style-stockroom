@@ -11,13 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/product', [ProductController::class, 'index']);
-
-Route::get('/product/{slug}', function ($slug) {
-    return view('detail', [
-        'title' => 'STYLE STOCKROOM | Product detail',
-        'product' => Product::productDetail($slug)
-    ]);
-});
+Route::get('/product/{slug}', [ProductController::class, 'detail']);
 
 Route::get('/contact', function () {
     return view('contact', [
