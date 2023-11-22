@@ -12,4 +12,11 @@ class ProductController extends Controller {
             'products' => Product::productList()
         ]);
     }
+    
+    public function detail ($slug) {
+        return view('detail', [
+            'title' => 'STYLE STOCKROOM | Product detail',
+            'product' => Product::productDetail($slug)
+        ]);
+    }
 }
