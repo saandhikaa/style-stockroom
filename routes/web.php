@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Product;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return view('home', [
@@ -9,12 +10,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/product', function () {
-    return view('product', [
-        'title' => 'STYLE STOCKROOM | All Product',
-        'products' => Product::productList()
-    ]);
-});
+Route::get('/product', [ProductController::class, 'index']);
 
 Route::get('/product/{slug}', function ($slug) {
     return view('detail', [
