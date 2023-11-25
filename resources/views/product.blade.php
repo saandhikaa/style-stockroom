@@ -5,10 +5,10 @@
     <ul>
         @foreach ($products as $product)
         <li class="mb-6">
-            <h2 class="font-semibold text-xl">{{ $product["name"] }}</h2>
+            <h2 class="font-semibold text-xl">{{ $product->name }}</h2>
             <p>{{ $product["price"] }}</p>
-            <p class="italic mb-2">"{{ $product["description"] }}"</p>
-            <a href="/product/{{ $product['id'] }}" class="text-blue-600">More info..</a>
+            <p class="italic mb-2">"{{ $product->description }}"</p>
+            <a href="/product/{{ $product->id }}" class="text-blue-600">More info..</a>
         </li>
         @endforeach
     </ul>
