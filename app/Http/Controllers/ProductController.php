@@ -13,10 +13,10 @@ class ProductController extends Controller {
         ]);
     }
     
-    public function detail ($slug) {
+    public function detail ($id) {
         return view('detail', [
             'title' => 'STYLE STOCKROOM | Product detail',
-            'product' => Product::productDetail($slug)
+            'product' => Product::find($id)
         ]);
     }
 }
