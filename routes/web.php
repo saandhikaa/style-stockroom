@@ -11,7 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/product', [ProductController::class, 'index']);
-Route::get('/product/{id}', [ProductController::class, 'detail']);
+Route::get('/product/{product}', [ProductController::class, 'detail']);
 
 Route::get('/contact', function () {
     return view('contact', [
