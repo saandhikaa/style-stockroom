@@ -5,6 +5,6 @@
     <p class="text-lg font-semibold">{{ $product->price }}</p>
     <p>{{ $product->sizes }}</p>
     <p>{{ $product->colors }}</p>
-    <p class="italic mb-4">"{{ $product->description }}"</p>
+    <p class="italic mb-4">"{!! $product->description !!}"</p>
     <a href="/product" class="text-blue-600">back</a>
 @endsection
