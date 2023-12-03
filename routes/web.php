@@ -14,9 +14,15 @@ Route::get('/', function () {
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product:slug}', [ProductController::class, 'detail']);
 
+Route::get('/categories', function (Category $category) {
+    return view('categories', [
+        'title' => 'STYLE STOCKROOM | Categories',
+        'categories' => Category::all()
+    ]);
+});
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('category', [
-        'title' => 'STYLE STOCKROOM | Category',
+        'title' => 'STYLE STOCKROOM | ' . $category->name,
         'products' => $category->product,
         'category' => $category->name
     ]);
