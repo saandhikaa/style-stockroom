@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Product;
 use App\Http\Controllers\ProductController;
+use App\Models\Product;
+use App\Models\Category;
 
 Route::get('/', function () {
     return view('home', [
@@ -12,6 +13,14 @@ Route::get('/', function () {
 
 Route::get('/product', [ProductController::class, 'index']);
 Route::get('/product/{product:slug}', [ProductController::class, 'detail']);
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category', [
+        'title' => 'STYLE STOCKROOM | Category',
+        'products' => $category->product,
+        'category' => $category->name
+    ]);
+});
 
 Route::get('/contact', function () {
     return view('contact', [
