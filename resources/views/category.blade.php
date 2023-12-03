@@ -11,5 +11,4 @@
         </li>
         @endforeach
     </ul>
-    <a href="/products" class="text-blue-600 mt-3">back</a>
 @endsection
