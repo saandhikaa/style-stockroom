@@ -11,8 +11,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/product', [ProductController::class, 'index']);
-Route::get('/product/{product:slug}', [ProductController::class, 'detail']);
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product:slug}', [ProductController::class, 'detail']);
 
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('category', [

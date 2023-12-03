@@ -4,13 +4,12 @@
     <h1 class="text-2xl font-semibold mb-8 text-center">Category: {{ $category }}</h1>
     <ul>
         @foreach ($products as $product)
-        <li class="mb-6">
-            <h2 class="font-semibold text-xl">{{ $product->name }}</h2>
+        <li class="mb-10">
+            <h2 class="font-semibold text-xl"><a href="/products/{{ $product->slug }}" class="text-blue-600">{{ $product->name }}</a></h2>
             <p>{{ $product->price }}</p>
             <p class="italic">"{{ $product->description }}"</p>
-            <p class="mb-2">Category: <a href="/categories/{{ $product->category->slug }}">{{ $product->category->name }}</a></p>
-            <a href="/product/{{ $product->slug }}" class="text-blue-600">More info..</a>
         </li>
         @endforeach
     </ul>
+    <a href="/products" class="text-blue-600 mt-3">back</a>
 @endsection
