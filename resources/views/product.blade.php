@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('main')
-    <h1 class="text-2xl font-semibold mb-8 text-center">Product List</h1>
+    <h1 class="text-2xl font-semibold mb-8 text-center">{{ $title }}</h1>
     <ul>
         @foreach ($products as $product)
         <li class="mb-10">
