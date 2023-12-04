@@ -8,7 +8,7 @@ use App\Models\Product;
 class ProductController extends Controller {
     public function index() {
         return view('product', [
-            'title' => 'STYLE STOCKROOM | All Product',
+            'title' => 'All Product',
             'products' => Product::latest()->get()
         ]);
     }
