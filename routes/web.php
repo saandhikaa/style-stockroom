@@ -21,10 +21,9 @@ Route::get('/categories', function (Category $category) {
     ]);
 });
 Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category', [
-        'title' => 'STYLE STOCKROOM | ' . $category->name,
-        'products' => $category->product,
-        'category' => $category->name
+    return view('product', [
+        'title' => 'Product in ' . $category->name,
+        'products' => $category->product
     ]);
 });
 
