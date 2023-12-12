@@ -4,6 +4,7 @@
     <h1 class="text-2xl font-semibold mb-8 text-center">{{ $title }}</h1>
     @if ($products->count())
         <div class="container mx-auto my-8 p-8 max-w-2xl border-2 border-blue-400 rounded">
+            <img src="https://source.unsplash.com/1000x1000/?{{ $products[0]->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
             <h2 class="font-semibold text-2xl text-gray-800 leading-tight"><a href="/products/{{ $products[0]->slug }}" class="text-blue-600 hover:text-blue-700">{{ $products[0]->name }}</a></h2>
             <p class="text-gray-600 mb-2">in <a href="/categories/{{ $products[0]->category->slug }}" class="text-blue-500 hover:text-blue-600">{{ $products[0]->category->name }}</a></p>
             <p class="text-gray-800 font-bold">{{ $products[0]->price }}</p>
