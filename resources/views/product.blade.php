@@ -15,6 +15,7 @@
     <ul class="grid grid-cols-2 gap-4">
         @foreach ($products->skip(1) as $product)
         <li class="border border-blue-400 rounded p-4">
+            <img src="https://source.unsplash.com/1000x1000/?{{ $product->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
             <h2 class="font-semibold text-xl"><a href="/products/{{ $product->slug }}" class="text-blue-600">{{ $product->name }}</a></h2>
             <p class="mb-2">in <a href="/categories/{{ $product->category->slug }}" class="text-blue-500">{{ $product->category->name }}</a></p>
             <p>{{ $product->price }}</p>
