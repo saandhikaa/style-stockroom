@@ -12,9 +12,9 @@
         </div>
     @endif
     
-    <ul>
+    <ul class="grid grid-cols-2 gap-4">
         @foreach ($products->skip(1) as $product)
-        <li class="mb-10">
+        <li class="border border-blue-400 rounded p-4">
             <h2 class="font-semibold text-xl"><a href="/products/{{ $product->slug }}" class="text-blue-600">{{ $product->name }}</a></h2>
             <p class="mb-2">in <a href="/categories/{{ $product->category->slug }}" class="text-blue-500">{{ $product->category->name }}</a></p>
             <p>{{ $product->price }}</p>
