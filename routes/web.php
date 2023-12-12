@@ -23,7 +23,7 @@ Route::get('/categories', function (Category $category) {
 Route::get('/categories/{category:slug}', function (Category $category) {
     return view('product', [
         'title' => 'Product in ' . $category->name,
-        'products' => $category->product
+        'products' => $category->product->load('category')
     ]);
 });
 
