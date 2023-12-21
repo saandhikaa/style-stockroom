@@ -2,6 +2,14 @@
 
 @section('main')
     <h1 class="text-2xl font-semibold mb-8 text-center">{{ $title }}</h1>
+    
+    <div class="container mx-auto">
+        <form action="/products" method="get" class="flex">
+            <input id="search" type="text" name="query" placeholder="Search..." class="flex-grow border-2 border-gray-300 p-2 rounded-l-md focus:border-blue-500 focus:outline-none">
+            <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-md">Search</button>
+        </form>
+    </div>
+    
     @if ($products->count())
         <div class="container mx-auto my-8 p-8 max-w-2xl border-2 border-blue-400 rounded">
             <img src="https://source.unsplash.com/1000x1000/?{{ $products[0]->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
