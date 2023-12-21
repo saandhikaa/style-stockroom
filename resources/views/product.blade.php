@@ -5,7 +5,7 @@
     
     <div class="container mx-auto">
         <form action="/products" method="get" class="flex">
-            <input id="search" type="text" name="query" placeholder="Search..." class="flex-grow border-2 border-gray-300 p-2 rounded-l-md focus:border-blue-500 focus:outline-none">
+            <input id="search" type="text" name="query" placeholder="Search..." value="{{ request('query') }}" class="flex-grow border-2 border-gray-300 p-2 rounded-l-md focus:border-blue-500 focus:outline-none">
             <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-md">Search</button>
         </form>
     </div>
