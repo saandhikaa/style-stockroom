@@ -13,12 +13,12 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $with = 'category';
     
-    public function scopeFilter ($query)
+    public function scopeFilter ($query, array $filters)
     {
-        if (request('query')) {
-            return $query->where('name', 'like', '%' . request('query') . '%')
-                         ->orWhere('description', 'like', '%' . request('query') . '%');
-        }
+        $query->when($filters['search'] ?? false, function ($query, $search) {
+            return $query->where('name', 'like', '%' . $search . '%')
+                         ->orWhere('description', 'like', '%' . $search . '%');
+        });
     }
     
     public function category()

@@ -10,7 +10,7 @@ class ProductController extends Controller {
         
         return view('product', [
             'title' => 'All Product',
-            'products' => Product::latest()->filter()->get()
+            'products' => Product::latest()->filter(request(['search']))->get()
         ]);
     }
     
