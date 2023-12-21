@@ -7,16 +7,10 @@ use App\Models\Product;
 
 class ProductController extends Controller {
     public function index() {
-        $products = Product::latest();
-        
-        if (request('query')) {
-            $products->where('name', 'like', '%' . request('query') . '%')
-                     ->orWhere('description', 'like', '%' . request('query') . '%');
-        }
         
         return view('product', [
             'title' => 'All Product',
-            'products' => $products->get()
+            'products' => Product::latest()->filter()->get()
         ]);
     }
     

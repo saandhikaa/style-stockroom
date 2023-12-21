@@ -13,6 +13,14 @@ class Product extends Model
     protected $guarded = ['id'];
     protected $with = 'category';
     
+    public function scopeFilter ($query)
+    {
+        if (request('query')) {
+            return $query->where('name', 'like', '%' . request('query') . '%')
+                         ->orWhere('description', 'like', '%' . request('query') . '%');
+        }
+    }
+    
     public function category()
     {
         return $this->belongsTo(Category::class);
