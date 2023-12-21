@@ -10,7 +10,8 @@ class ProductController extends Controller {
         $products = Product::latest();
         
         if (request('query')) {
-            $products->where('name', 'like', '%' . request('query') . '%');
+            $products->where('name', 'like', '%' . request('query') . '%')
+                     ->orWhere('description', 'like', '%' . request('query') . '%');
         }
         
         return view('product', [
