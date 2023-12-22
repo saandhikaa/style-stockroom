@@ -14,7 +14,7 @@
         <div class="container mx-auto my-8 p-8 max-w-2xl border-2 border-blue-400 rounded">
             <img src="https://source.unsplash.com/1000x1000/?{{ $products[0]->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
             <h2 class="font-semibold text-2xl text-gray-800 leading-tight"><a href="/products/{{ $products[0]->slug }}" class="text-blue-600 hover:text-blue-700">{{ $products[0]->name }}</a></h2>
-            <p class="text-gray-600 mb-2">in <a href="/categories/{{ $products[0]->category->slug }}" class="text-blue-500 hover:text-blue-600">{{ $products[0]->category->name }}</a></p>
+            <p class="text-gray-600 mb-2">in <a href="/products?category={{ $products[0]->category->slug }}" class="text-blue-500 hover:text-blue-600">{{ $products[0]->category->name }}</a></p>
             <p class="text-gray-800 font-bold">{{ $products[0]->price }}</p>
             <p class="italic text-gray-600">"{{ $products[0]->description }}"</p>
         </div>
@@ -24,7 +24,7 @@
             <li class="border border-blue-400 rounded p-4">
                 <img src="https://source.unsplash.com/1000x1000/?{{ $product->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
                 <h2 class="font-semibold text-xl"><a href="/products/{{ $product->slug }}" class="text-blue-600">{{ $product->name }}</a></h2>
-                <p class="mb-2">in <a href="/categories/{{ $product->category->slug }}" class="text-blue-500">{{ $product->category->name }}</a></p>
+                <p class="mb-2">in <a href="/products?category={{ $product->category->slug }}" class="text-blue-500">{{ $product->category->name }}</a></p>
                 <p>{{ $product->price }}</p>
                 <p class="italic">"{{ $product->description }}"</p>
             </li>
