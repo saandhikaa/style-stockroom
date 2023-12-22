@@ -33,6 +33,10 @@
             </li>
             @endforeach
         </ul>
+        
+        <div class="mt-10 flex justify-center items-center">
+            {{ $products->links() }}
+        </div>
     @else
         <h3 class="text-2xl text-gray-500 my-8 text-center">404</h3>
     @endif

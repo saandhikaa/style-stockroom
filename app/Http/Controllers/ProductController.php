@@ -16,7 +16,7 @@ class ProductController extends Controller {
         
         return view('product', [
             'title' => 'All Product' . $title,
-            'products' => Product::latest()->filter(request(['search', 'category']))->get()
+            'products' => Product::latest()->filter(request(['search', 'category']))->paginate(6)
         ]);
     }
     
