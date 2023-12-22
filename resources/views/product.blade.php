@@ -6,6 +6,9 @@
     <div class="container mx-auto">
         <form action="/products" method="get" class="flex">
             <input id="search" type="text" name="search" placeholder="Search..." value="{{ request('query') }}" class="flex-grow border-2 border-gray-300 p-2 rounded-l-md focus:border-blue-500 focus:outline-none">
+            @if (request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+            @endif
             <button type="submit" class="bg-blue-500 text-white p-2 rounded-r-md">Search</button>
         </form>
     </div>
