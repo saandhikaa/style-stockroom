@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegistrationController;
 
 use App\Models\Product;
 use App\Models\Category;
@@ -17,6 +18,7 @@ Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product:slug}', [ProductController::class, 'detail']);
 
 Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegistrationController::class, 'index']);
 
 Route::get('/categories', function (Category $category) {
     return view('categories', [
