@@ -12,4 +12,9 @@ class RegistrationController extends Controller
             'title' => 'Registration'
         ]);
     }
+    
+    public function store (Request $request)
+    {
+        dd($request->all());
+    }
 }
