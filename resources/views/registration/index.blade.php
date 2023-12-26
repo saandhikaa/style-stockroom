@@ -11,7 +11,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
                             Name
                         </label>
-                        <input class="shadow appearance-none border {{ $errors->has('name') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name" name="name">
+                        <input class="shadow appearance-none border {{ $errors->has('name') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" placeholder="Name" name="name" required>
                         @error('name')
                             <span class="text-red-500 text-xs italic">{{ $message }}</span>
                         @enderror
@@ -20,7 +20,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                             Email
                         </label>
-                        <input class="shadow appearance-none border {{ $errors->has('email') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" name="email">
+                        <input class="shadow appearance-none border {{ $errors->has('email') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" name="email" required>
                         @error('email')
                             <span class="text-red-500 text-xs italic">{{ $message }}</span>
                         @enderror
@@ -29,7 +29,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
                             Password
                         </label>
-                        <input class="shadow appearance-none border {{ $errors->has('password') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" name="password">
+                        <input class="shadow appearance-none border {{ $errors->has('password') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" name="password" required>
                         @error('password')
                             <span class="text-red-500 text-xs italic">{{ $message }}</span>
                         @enderror
