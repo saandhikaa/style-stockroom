@@ -22,7 +22,7 @@
                         <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
                             Email
                         </label>
-                        <input class="shadow appearance-none border {{ $errors->has('email') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" name="email" required>
+                        <input class="shadow appearance-none border {{ $errors->has('email') ? 'border-red-500' : '' }} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" name="email" value="{{ old('email') }}" required>
                         @error('email')
                             <span class="text-red-500 text-xs italic">{{ $message }}</span>
                         @enderror
