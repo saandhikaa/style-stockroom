@@ -28,4 +28,15 @@ class LoginController extends Controller
         
         return back()->with('authFail', 'Email/Password is incorrect.');
     }
+    
+    public function logout()
+    {
+        Auth::logout();
+        
+        request()->session()->invalidate();
+        
+        request()->session()->regenerateToken();
+        
+        return redirect('/');
+    }
 }
