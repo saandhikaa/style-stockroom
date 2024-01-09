@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
-use App\Http\Controllers\DashboardController;
 
 use App\Models\Product;
 use App\Models\Category;
@@ -15,6 +14,9 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product:slug}', [ProductController::class, 'detail']);
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
@@ -23,10 +25,11 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegistrationController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegistrationController::class, 'store']);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{product:slug}', [ProductController::class, 'detail']);
+Route::get('/dashboard', function() {
+    return view('dashboard.index', [
+        'title' => 'Dashboard'
+    ]);
+})->middleware('auth');
 
 Route::get('/categories', function (Category $category) {
     return view('categories', [
