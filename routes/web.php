@@ -20,7 +20,7 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegistrationController::class, 'index']);
+Route::get('/register', [RegistrationController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegistrationController::class, 'store']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
