@@ -26,9 +26,7 @@ Route::get('/register', [RegistrationController::class, 'index'])->middleware('g
 Route::post('/register', [RegistrationController::class, 'store']);
 
 Route::get('/dashboard', function() {
-    return view('dashboard.index', [
-        'title' => 'Dashboard'
-    ]);
+    return view('dashboard.index');
 })->middleware('auth');
 
 Route::get('/categories', function (Category $category) {
