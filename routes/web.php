@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\DashboardProductController;
 
 use App\Models\Product;
 use App\Models\Category;
@@ -28,6 +29,8 @@ Route::post('/register', [RegistrationController::class, 'store']);
 Route::get('/dashboard', function() {
     return view('dashboard.index');
 })->middleware('auth');
+
+Route::resource('/dashboard/products', DashboardProductController::class)->middleware('auth');
 
 Route::get('/categories', function (Category $category) {
     return view('categories', [
