@@ -5,9 +5,9 @@
         </button>
         <h2 class="text-2xl text-white">Menu</h2>
     </div>
-    <ul class="mt-4 space-y-2 flex-grow">
-        <li><a href="/dashboard" class="px-4 py-2 text-left text-gray-800 hover:bg-blue-500 hover:text-white w-full block">Dashboard</a></li>
-        <li><a href="/dashboard/products" class="px-4 py-2 text-left text-gray-800 hover:bg-blue-500 hover:text-white w-full block">Product</a></li>
+    <ul class="mt-4 space-y-1 flex-grow">
+        <li><a href="/dashboard" class="px-4 py-2 text-left hover:bg-blue-500 hover:text-white w-full block {{ Request::is('dashboard') ? 'font-semibold text-blue-500' : 'text-gray-800' }}">Dashboard</a></li>
+        <li><a href="/dashboard/products" class="px-4 py-2 text-left hover:bg-blue-500 hover:text-white w-full block {{ Request::is('dashboard/products') ? 'font-semibold text-blue-500' : 'text-gray-800' }} ">Product</a></li>
     </ul>
     <form method="POST" action="/logout" class="mb-4">
         @csrf
@@ -31,17 +31,4 @@
     document.querySelector('#openSidebar').addEventListener('click', toggleSidebar);
     document.querySelector('#closeSidebar').addEventListener('click', toggleSidebar);
     document.querySelector('#overlay').addEventListener('click', toggleSidebar);
-    
-    const sidebarLinks = document.querySelectorAll('#sidebar a');
-    function setActiveLink() {
-        const currentHref = window.location.pathname;
-        
-        sidebarLinks.forEach(link => {
-            if (currentHref === link.getAttribute('href')) {
-                link.classList.remove('text-gray-800');
-                link.classList.add('font-semibold', 'text-blue-500');
-            }
-        });
-    }
-    setActiveLink();
 </script>
