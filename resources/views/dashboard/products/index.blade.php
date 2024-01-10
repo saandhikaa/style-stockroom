@@ -20,7 +20,7 @@
                         <td class="border px-4 py-2">{{ $product->name }}</td>
                         <td class="border px-4 py-2">{{ $product->sizes }}</td>
                         <td class="border px-4 py-2">{{ $product->colors }}</td>
-                        <td class="border px-4 py-2">{{ $product->price }}</td>
+                        <td class="border px-4 py-2">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
                     </tr>
                 @endforeach
             </tbody>
