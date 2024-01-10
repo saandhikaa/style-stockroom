@@ -6,9 +6,8 @@
         <h2 class="text-2xl text-white">Menu</h2>
     </div>
     <ul class="mt-4 space-y-2 flex-grow">
-        <li><a href="#" class="px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-500 hover:text-white w-full block">Link 1</a></li>
-        <li><a href="#" class="px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-500 hover:text-white w-full block">Link 2</a></li>
-        <li><a href="#" class="px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-500 hover:text-white w-full block">Link 3</a></li>
+        <li><a href="/dashboard" class="px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-500 hover:text-white w-full block">Dashboard</a></li>
+        <li><a href="/dashboard/products" class="px-4 py-2 text-sm text-left text-gray-800 hover:bg-blue-500 hover:text-white w-full block">Product</a></li>
     </ul>
     <form method="POST" action="/logout" class="mb-4">
         @csrf
