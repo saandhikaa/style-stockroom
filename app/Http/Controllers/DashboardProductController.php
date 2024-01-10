@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 
 class DashboardProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        return 'hallo lagi adel';
+        return view('dashboard.products.index', [
+            'products' => Product::all()
+        ]);
     }
 
     /**
