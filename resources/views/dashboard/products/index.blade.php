@@ -24,7 +24,7 @@
                         <td class="border px-4 py-2">Rp. {{ number_format($product->price, 0, ',', '.') }}</td>
                         <td class="border px-4 py-2">
                             <ul>
-                                <li><a href="/dashboard/products/{{ $product->id }}" class="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full">view</a></li>
+                                <li><a href="/dashboard/products/{{ $product->slug }}" class="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full">view</a></li>
                                 <li><a href="" class="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full">edit</a></li>
                                 <li><a href="" class="inline-block bg-red-500 text-white text-xs px-2 py-1 rounded-full">delete</a></li>
                             </ul>
