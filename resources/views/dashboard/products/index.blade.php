@@ -2,6 +2,8 @@
 
 @section('main')
     <h1 class="text-2xl mt-4">Product list</h1>
+    <a href="/dashboard/products/create" class="inline-block bg-blue-500 text-white mt-4 px-4 py-1 rounded-md">Add new product</a>
+    
     <div class="overflow-x-auto mt-4">
         <table class="table-auto w-full">
             <thead>
