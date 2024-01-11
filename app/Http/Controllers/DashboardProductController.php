@@ -13,13 +13,10 @@ class DashboardProductController extends Controller
             'products' => Product::all()
         ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
+    
     public function create()
     {
-        //
+        return view('dashboard.products.create');
     }
 
     /**
