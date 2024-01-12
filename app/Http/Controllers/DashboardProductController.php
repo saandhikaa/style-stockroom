@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -17,7 +19,9 @@ class DashboardProductController extends Controller
     
     public function create()
     {
-        return view('dashboard.products.create');
+        return view('dashboard.products.create', [
+            'categories' => Category::all()
+        ]);
     }
 
     /**
