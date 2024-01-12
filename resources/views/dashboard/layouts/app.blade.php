@@ -11,7 +11,7 @@
 <body>
     @include('dashboard.layouts.header')
     
-    <main>
+    <main class="p-4">
         @yield('main')
     </main>
     
