@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardProductController extends Controller
 {
@@ -59,5 +60,11 @@ class DashboardProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+    
+    public function generateSlug (Request $request)
+    {
+        $slug = SlugService::createSlug(Product::class, 'slug', $request->data);
+        return response()->json(['slug' => $slug]);
     }
 }
