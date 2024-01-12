@@ -30,6 +30,7 @@ Route::get('/dashboard', function() {
     return view('dashboard.index');
 })->middleware('auth');
 
+Route::get('/dashboard/products/generateSlug', [DashboardProductController::class, 'generateSlug']);
 Route::resource('/dashboard/products', DashboardProductController::class)->middleware('auth');
 
 Route::get('/categories', function (Category $category) {
