@@ -17,4 +17,15 @@
             <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">Add Product</button>
         </div>
     </form>
+    
+    <script>
+        const name = document.querySelector('#name');
+        const slug = document.querySelector('#slug');
+        
+        name.addEventListener('change', function() {
+            fetch('/dashboard/products/generateSlug?data=' + name.value)
+                .then(response => response.json())
+                .then(data => slug.value = data.slug)
+        });
+    </script>
 @endsection
