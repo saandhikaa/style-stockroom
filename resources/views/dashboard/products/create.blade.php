@@ -35,6 +35,17 @@
             </div>
         </div>
         
+        <div class="items-center mb-6">
+            <label class="block text-gray-500 font-bold mb-1 pr-4">Colors</label>
+            <div class="colors-container flex flex-wrap items-center">
+                <div class="flex items-center mr-2 mb-2">
+                    <input type="text" name="colors[]" placeholder="One color" class="dynamic-width-input bg-gray-200 appearance-none border-2 border-gray-200 rounded-l-md h-10 w-24 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-center">
+                    <button type="button" class="delete-color-button bg-gray-200 hover:bg-red-400 font-bold text-2xl text-gray-700 h-10 px-3 rounded-r-md border-l-2 border-l-gray-300">×</button>
+                </div>
+                <button type="button" class="add-color-button shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white text-2xl h-10 w-10 mb-2 rounded">+</button>
+            </div>
+        </div>
+        
         <div class="items-center">
             <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">Add Product</button>
         </div>
@@ -89,6 +100,49 @@
                 const target = event.target;
                 if (target.tagName === 'INPUT' && target.classList.contains('dynamic-width-input') && target.value === '') {
                     if (sizesContainer.querySelectorAll('input').length > 1) {
+                        target.closest('.flex').remove();
+                    }
+                }
+            }, true);
+            
+            const colorsContainer = document.querySelector('.colors-container');
+            
+            colorsContainer.addEventListener('input', function (event) {
+                const target = event.target;
+                if (target.tagName === 'INPUT' && target.classList.contains('dynamic-width-input')) {
+                    target.style.width = `calc(${target.value.length}ch + 34px)`;
+                }
+            });
+            
+            colorsContainer.addEventListener('click', function (event) {
+                const target = event.target;
+                if (target.classList.contains('delete-color-button')) {
+                    if (colorsContainer.querySelectorAll('input').length === 1) {
+                        return;
+                    }
+                    target.closest('.flex').remove();
+                } else if (target.classList.contains('add-color-button')) {
+                    const inputs = colorsContainer.querySelectorAll('input');
+                    for (let i = 0; i < inputs.length; i++) {
+                        if (inputs[i].value === '') {
+                            return;
+                        }
+                    }
+                    const newColorField = target.previousElementSibling.cloneNode(true);
+                    
+                    newColorField.querySelector('input').value = '';
+                    newColorField.querySelector('input').style.width = '60px';
+                    newColorField.querySelector('input').placeholder = 'color';
+                    
+                    colorsContainer.insertBefore(newColorField, target);
+                    newColorField.querySelector('input').focus();
+                }
+            });
+            
+            colorsContainer.addEventListener('blur', function (event) {
+                const target = event.target;
+                if (target.tagName === 'INPUT' && target.classList.contains('dynamic-width-input') && target.value === '') {
+                    if (colorsContainer.querySelectorAll('input').length > 1) {
                         target.closest('.flex').remove();
                     }
                 }
