@@ -24,6 +24,17 @@
             </select>
         </div>
         
+        <div class="items-center mb-6">
+            <label class="block text-gray-500 font-bold mb-1 pr-4">Sizes</label>
+            <div class="sizes-container flex flex-wrap items-center">
+                <div class="flex items-center mr-2 mb-2">
+                    <input type="text" name="sizes[]" placeholder="One size" class="dynamic-width-input bg-gray-200 appearance-none border-2 border-gray-200 rounded-l-md h-10 w-24 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-center">
+                    <button type="button" class="delete-size-button bg-gray-200 hover:bg-red-400 font-bold text-2xl text-gray-700 h-10 px-3 rounded-r-md border-l-2 border-l-gray-300">×</button>
+                </div>
+                <button type="button" class="add-size-button shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white text-2xl h-10 w-10 mb-2 rounded">+</button>
+            </div>
+        </div>
+        
         <div class="items-center">
             <button class="shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">Add Product</button>
         </div>
@@ -37,6 +48,51 @@
             fetch('/dashboard/products/generateSlug?data=' + name.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
+        });
+        
+        document.addEventListener('DOMContentLoaded', function () {
+            const sizesContainer = document.querySelector('.sizes-container');
+            
+            sizesContainer.addEventListener('input', function (event) {
+                const target = event.target;
+                if (target.tagName === 'INPUT' && target.classList.contains('dynamic-width-input')) {
+                    target.style.width = `calc(${target.value.length}ch + 34px)`;
+                }
+            });
+            
+            sizesContainer.addEventListener('click', function (event) {
+                const target = event.target;
+                if (target.classList.contains('delete-size-button')) {
+                    if (sizesContainer.querySelectorAll('input').length === 1) {
+                        return;
+                    }
+                    target.closest('.flex').remove();
+                } else if (target.classList.contains('add-size-button')) {
+                    const inputs = sizesContainer.querySelectorAll('input');
+                    for (let i = 0; i < inputs.length; i++) {
+                        if (inputs[i].value === '') {
+                            return;
+                        }
+                    }
+                    const newSizeField = target.previousElementSibling.cloneNode(true);
+                    
+                    newSizeField.querySelector('input').value = '';
+                    newSizeField.querySelector('input').style.width = '60px';
+                    newSizeField.querySelector('input').placeholder = 'size';
+                    
+                    sizesContainer.insertBefore(newSizeField, target);
+                    newSizeField.querySelector('input').focus();
+                }
+            });
+            
+            sizesContainer.addEventListener('blur', function (event) {
+                const target = event.target;
+                if (target.tagName === 'INPUT' && target.classList.contains('dynamic-width-input') && target.value === '') {
+                    if (sizesContainer.querySelectorAll('input').length > 1) {
+                        target.closest('.flex').remove();
+                    }
+                }
+            }, true);
         });
     </script>
 @endsection
