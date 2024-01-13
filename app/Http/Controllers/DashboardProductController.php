@@ -29,6 +29,7 @@ class DashboardProductController extends Controller
         $request->merge([
             'sizes' => count($request->sizes) == 1 ? 'One size' : implode(',', $request->sizes),
             'colors' => count($request->colors) == 1 ? 'One color' : implode(',', $request->colors),
+            'description' => empty($request->description) ? 'No description' : $request->description
         ]);
         
         dd($request->all());
