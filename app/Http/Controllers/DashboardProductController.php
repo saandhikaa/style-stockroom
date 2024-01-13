@@ -26,12 +26,14 @@ class DashboardProductController extends Controller
     
     public function store(Request $request)
     {
+        $request->merge([
+            'sizes' => count($request->sizes) == 1 ? 'One size' : implode(',', $request->sizes),
+            'colors' => count($request->colors) == 1 ? 'One color' : implode(',', $request->colors),
+        ]);
+        
         dd($request->all());
     }
-
-    /**
-     * Display the specified resource.
-     */
+    
     public function show(Product $product)
     {
         return view('dashboard.products.show', [
