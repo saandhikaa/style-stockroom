@@ -23,13 +23,10 @@ class DashboardProductController extends Controller
             'categories' => Category::all()
         ]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
+    
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
