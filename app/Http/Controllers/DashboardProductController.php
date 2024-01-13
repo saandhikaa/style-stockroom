@@ -32,7 +32,17 @@ class DashboardProductController extends Controller
             'description' => empty($request->description) ? 'No description' : $request->description
         ]);
         
-        dd($request->all());
+        $validatedData = $request->validate([
+            'name' => 'required|min:4|max:255',
+            'slug' => 'required|unique:products',
+            'sizes' => 'required',
+            'colors' => 'required',
+            'category_id' => 'required',
+            'price' => 'required',
+            'description' => 'required'
+        ]);
+        
+        dd($validatedData);
     }
     
     public function show(Product $product)
