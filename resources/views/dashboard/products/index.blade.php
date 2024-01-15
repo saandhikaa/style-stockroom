@@ -2,6 +2,18 @@
 
 @section('main')
     <h1 class="text-2xl mt-4">Product list</h1>
+    
+    @if (session()->has('added'))
+        <div class="bg-blue-500 text-white px-6 py-4 border-0 rounded relative my-6">
+            <span class="inline-block align-middle mr-8">
+                {{ session()->get('added') }}
+            </span>
+            <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none" onclick="this.parentElement.remove();">
+                <span>×</span>
+            </button>
+        </div>
+    @endif
+    
     <a href="/dashboard/products/create" class="inline-block bg-blue-500 text-white mt-4 px-4 py-1 rounded-md">Add new product</a>
     
     <div class="overflow-x-auto mt-4">
