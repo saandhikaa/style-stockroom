@@ -32,8 +32,7 @@ class DashboardProductController extends Controller
             'sizes' => 'required|array',
             'colors' => 'required|array',
             'category_id' => 'required',
-            'price' => 'required',
-            'description' => 'required',
+            'price' => 'required'
         ]);
         
         // Additional data to merge with the validated data
