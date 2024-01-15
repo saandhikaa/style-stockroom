@@ -63,7 +63,7 @@
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="description">Description</label>
-            <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full h-10 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 overflow-y-hidden" id="description" name="description" placeholder="Product description"></textarea>
+            <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full h-10 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 overflow-y-hidden" id="description" name="description" placeholder="Product description">{{ old('description') }}</textarea>
         </div>
         
         <div class="items-center">
