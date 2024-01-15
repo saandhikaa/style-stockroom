@@ -5,14 +5,21 @@
 
     <form action="/dashboard/products" method="post" class="w-full mt-5">
         @csrf
+        
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="name">Name</label>
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="name" name="name" type="text" placeholder="Product name">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('name') ? 'border-red-500' : '' }}" id="name" name="name" type="text" placeholder="Product name" value="{{ old('name') }}" required>
+            @error('name')
+                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+            @enderror
         </div>
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="slug">Slug</label>
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="slug" name="slug" type="text" placeholder="Product slug">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('slug') ? 'border-red-500' : '' }}" id="slug" name="slug" type="text" placeholder="Product slug" value="{{ old('slug') }}" required>
+            @error('slug')
+                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+            @enderror
         </div>
         
         <div class="items-center mb-6">
@@ -48,7 +55,10 @@
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="price">Price</label>
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="price" name="price" type="number" placeholder="Product price">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('price') ? 'border-red-500' : '' }}" id="price" name="price" type="number" placeholder="Product price" value="{{ old('price') }}" required>
+            @error('price')
+                <span class="text-red-500 text-xs italic">{{ $message }}</span>
+            @enderror
         </div>
         
         <div class="items-center mb-6">
