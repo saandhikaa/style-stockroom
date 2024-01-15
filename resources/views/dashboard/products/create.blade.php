@@ -26,7 +26,11 @@
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="category">Category</label>
             <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="category" name="category_id">
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @if (old('category_id') == $category->id)
+                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                    @else
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endif
                 @endforeach
             </select>
         </div>
