@@ -45,7 +45,9 @@ class DashboardProductController extends Controller
         // Merge additional data with the validated data using the original $request
         $mergedData = $request->merge($additionalData)->all();
         
-        dd($mergedData);
+        Product::create($mergedData);
+        
+        return redirect('/dashboard/products')->with('added', 'New product added successfully!');
     }
 
     
