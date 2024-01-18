@@ -44,10 +44,8 @@ class DashboardProductController extends Controller
         
         // Merge additional data with the validated data using the original $request
         $mergedData = $request->merge($additionalData)->all();
-        
         Product::create($mergedData);
-        
-        return redirect('/dashboard/products')->with('added', 'New product added successfully!');
+        return redirect('/dashboard/products')->with('success', 'New product added successfully!');
     }
 
     
@@ -77,7 +75,7 @@ class DashboardProductController extends Controller
     public function destroy(Product $product)
     {
         Product::destroy($product->id);
-        return redirect('/dashboard/products')->with('added', 'Product deleted successfully!'); 
+        return redirect('/dashboard/products')->with('success', 'Product deleted successfully!');
     }
     
     public function generateSlug (Request $request)
