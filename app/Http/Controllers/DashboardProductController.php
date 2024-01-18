@@ -73,13 +73,11 @@ class DashboardProductController extends Controller
     {
         //
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Product $product)
     {
-        //
+        Product::destroy($product->id);
+        return redirect('/dashboard/products')->with('added', 'Product deleted successfully!'); 
     }
     
     public function generateSlug (Request $request)
