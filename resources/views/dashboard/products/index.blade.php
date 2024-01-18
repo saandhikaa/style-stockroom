@@ -40,7 +40,15 @@
                             <ul>
                                 <li><a href="/dashboard/products/{{ $product->slug }}" class="inline-block bg-blue-500 text-white text-xs px-2 py-1 rounded-full">view</a></li>
                                 <li><a href="" class="inline-block bg-green-500 text-white text-xs px-2 py-1 rounded-full">edit</a></li>
-                                <li><a href="" class="inline-block bg-red-500 text-white text-xs px-2 py-1 rounded-full">delete</a></li>
+                                <li>
+                                    <form method="POST" action="/dashboard/products/{{ $product->slug }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="inline-block bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </li>
                             </ul>
                         </td>
                     </tr>
