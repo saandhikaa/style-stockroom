@@ -55,13 +55,13 @@ class DashboardProductController extends Controller
             'product' => $product
         ]);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    
     public function edit(Product $product)
     {
-        //
+        return view('dashboard.products.edit', [
+            'product' => $product,
+            'categories' => Category::all()
+        ]);
     }
 
     /**
