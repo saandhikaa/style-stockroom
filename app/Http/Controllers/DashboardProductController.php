@@ -59,6 +59,7 @@ class DashboardProductController extends Controller
     public function edit(Product $product)
     {
         $product->sizesArray = $product->sizes ? explode(',', $product->sizes) : [];
+        $product->colorsArray = $product->colors ? explode(',', $product->colors) : [];
         
         return view('dashboard.products.edit', [
             'product' => $product,
