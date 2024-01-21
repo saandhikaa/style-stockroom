@@ -90,10 +90,12 @@
         });
         
         const textarea = document.querySelector("#description");
-        textarea.addEventListener("input", e => {
+        const textareaAutoHeight = () => {
             textarea.style.height = "auto";
             textarea.style.height = textarea.scrollHeight + "px";
-        });
+        };
+        textareaAutoHeight();
+        textarea.addEventListener("input", textareaAutoHeight());
         
         document.addEventListener('DOMContentLoaded', function () {
             const sizesContainer = document.querySelector('.sizes-container');
