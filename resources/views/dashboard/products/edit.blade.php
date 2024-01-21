@@ -9,7 +9,7 @@
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="name">Name</label>
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('name') ? 'border-red-500' : '' }}" id="name" name="name" type="text" placeholder="Product name" value="{{ old('name') }}" required>
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('name') ? 'border-red-500' : '' }}" id="name" name="name" type="text" placeholder="Product name" value="{{ old('name', $product->name) }}" required>
             @error('name')
                 <span class="text-red-500 text-xs italic">{{ $message }}</span>
             @enderror
@@ -17,7 +17,7 @@
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="slug">Slug</label>
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('slug') ? 'border-red-500' : '' }}" id="slug" name="slug" type="text" placeholder="Product slug" value="{{ old('slug') }}" required>
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('slug') ? 'border-red-500' : '' }}" id="slug" name="slug" type="text" placeholder="Product slug" value="{{ old('slug', $product->slug) }}" required>
             @error('slug')
                 <span class="text-red-500 text-xs italic">{{ $message }}</span>
             @enderror
@@ -27,7 +27,7 @@
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="category">Category</label>
             <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="category" name="category_id">
                 @foreach ($categories as $category)
-                    @if (old('category_id') == $category->id)
+                    @if (old('category_id', $product->category_id) == $category->id)
                         <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                     @else
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -64,7 +64,7 @@
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="price">Price</label>
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('price') ? 'border-red-500' : '' }}" id="price" name="price" type="number" placeholder="Product price" value="{{ old('price') }}" required>
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('price') ? 'border-red-500' : '' }}" id="price" name="price" type="number" placeholder="Product price" value="{{ old('price', $product->price) }}" required>
             @error('price')
                 <span class="text-red-500 text-xs italic">{{ $message }}</span>
             @enderror
@@ -72,7 +72,7 @@
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="description">Description</label>
-            <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full h-10 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 overflow-y-hidden" id="description" name="description" placeholder="Product description">{{ old('description') }}</textarea>
+            <textarea class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full h-10 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 overflow-y-hidden" id="description" name="description" placeholder="Product description">{{ old('description', $product->description) }}</textarea>
         </div>
         
         <div class="items-center">
