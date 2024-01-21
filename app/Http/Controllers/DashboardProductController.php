@@ -58,15 +58,14 @@ class DashboardProductController extends Controller
     
     public function edit(Product $product)
     {
+        $product->sizesArray = $product->sizes ? explode(',', $product->sizes) : [];
+        
         return view('dashboard.products.edit', [
             'product' => $product,
             'categories' => Category::all()
         ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
+    
     public function update(Request $request, Product $product)
     {
         //
