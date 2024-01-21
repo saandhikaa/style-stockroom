@@ -91,21 +91,21 @@
         });
         
         const textarea = document.querySelector("#description");
-        textarea.addEventListener("input", e => {
+        const textareaAutoHeight = () => {
             textarea.style.height = "auto";
             textarea.style.height = textarea.scrollHeight + "px";
-        });
+        };
+        textareaAutoHeight();
+        textarea.addEventListener("input", textareaAutoHeight());
         
         document.addEventListener('DOMContentLoaded', function () {
             const sizesContainer = document.querySelector('.sizes-container');
-            
             sizesContainer.addEventListener('input', function (event) {
                 const target = event.target;
                 if (target.tagName === 'INPUT' && target.classList.contains('dynamic-width-input')) {
                     target.style.width = `calc(${target.value.length}ch + 34px)`;
                 }
             });
-            
             sizesContainer.addEventListener('click', function (event) {
                 const target = event.target;
                 if (target.classList.contains('delete-size-button')) {
@@ -121,16 +121,13 @@
                         }
                     }
                     const newSizeField = target.previousElementSibling.cloneNode(true);
-                    
                     newSizeField.querySelector('input').value = '';
                     newSizeField.querySelector('input').style.width = '60px';
                     newSizeField.querySelector('input').placeholder = 'size';
-                    
                     sizesContainer.insertBefore(newSizeField, target);
                     newSizeField.querySelector('input').focus();
                 }
             });
-            
             sizesContainer.addEventListener('blur', function (event) {
                 const target = event.target;
                 if (target.tagName === 'INPUT' && target.classList.contains('dynamic-width-input') && target.value === '') {
