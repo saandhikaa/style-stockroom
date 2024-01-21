@@ -52,7 +52,7 @@
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4">Colors</label>
             <div class="colors-container flex flex-wrap items-center">
-                @foreach(old('colors', ['']) as $color)
+                @foreach(old('colors', $product->colorsArray, ['']) as $color)
                     <div class="flex items-center mr-2 mb-2">
                         <input type="text" name="colors[]" placeholder="One color" class="dynamic-width-input bg-gray-200 appearance-none border-2 border-gray-200 rounded-l-md h-10 w-24 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-center" value="{{ $color }}">
                         <button type="button" class="delete-color-button bg-gray-200 hover:bg-red-400 font-bold text-2xl text-gray-700 h-10 px-3 rounded-r-md border-l-2 border-l-gray-300">×</button>
