@@ -68,7 +68,28 @@ class DashboardProductController extends Controller
     
     public function update(Request $request, Product $product)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|min:4|max:255',
+            'slug' => 'required|unique:products,slug,' . $product->id,
+            'sizes' => 'required|array',
+            'colors' => 'required|array',
+            'category_id' => 'required',
+            'price' => 'required'
+        ]);
+        
+        // Additional data to merge with the validated data
+        $additionalData = [
+            'sizes' => count($request->sizes) == 1 ? 'One size' : implode(',', $request->sizes),
+            'colors' => count($request->colors) == 1 ? 'One color' : implode(',', $request->colors),
+            'description' => empty($request->description) ? 'No description' : $request->description,
+        ];
+        
+        // Merge additional data with the validated data using the original $request
+        $mergedData = $request->merge($additionalData)->all();
+        $product->update($mergedData);
+        
+        // Redirect or perform any other actions after updating
+        return redirect('/dashboard/products')->with('success', 'Product updated successfully!');
     }
     
     public function destroy(Product $product)
