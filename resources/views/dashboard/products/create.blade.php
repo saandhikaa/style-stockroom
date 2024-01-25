@@ -3,7 +3,7 @@
 @section('main')
     <h1 class="text-2xl mt-4">Add new product</h1>
 
-    <form action="/dashboard/products" method="post" class="w-full mt-5">
+    <form action="/dashboard/products" method="post" class="w-full mt-5" enctype="multipart/form-data">
         @csrf
         
         <div class="items-center mb-6">
@@ -22,6 +22,11 @@
             @enderror
         </div>
         
+        <div class="items-center mb-6">
+            <label class="block text-gray-500 font-bold mb-1 pr-4" for="image">Image</label>
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="image" name="image" type="file">
+        </div>
+
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="category">Category</label>
             <select class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500" id="category" name="category_id">
