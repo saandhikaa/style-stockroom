@@ -26,16 +26,19 @@ class DashboardProductController extends Controller
     
     public function store(Request $request)
     {
-        return $request->file('image')->store('product-image');
-        
         $validatedData = $request->validate([
             'name' => 'required|min:4|max:255',
             'slug' => 'required|unique:products',
+            'image' => 'image|file|max:2048',
             'sizes' => 'required|array',
             'colors' => 'required|array',
             'category_id' => 'required',
             'price' => 'required'
         ]);
+        
+        if ($request->file('image')) {
+            $validatedData = $request->file('image')->store('product-images');
+        }
         
         // Additional data to merge with the validated data
         $additionalData = [
