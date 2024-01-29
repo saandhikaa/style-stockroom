@@ -21,7 +21,7 @@
     @else
         <img src="https://source.unsplash.com/1000x1000/?{{ $product->category->name }}" alt="{{ $product->name }}" class="rounded-xl border-2 border-blue-500">
     @endif
-    <p class="text-lg font-semibold mt-4">{{ $product->price }}</p>
+    <p class="text-lg font-semibold mt-4">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
     <p>{{ $product->sizes }}</p>
     <p>{{ $product->colors }}</p>
     <p class="italic my-4">"{!! $product->description !!}"</p>
