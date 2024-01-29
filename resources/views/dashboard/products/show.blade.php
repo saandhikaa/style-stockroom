@@ -16,6 +16,11 @@
         </li>
     </ul>
     
+    @if ($product->image)
+        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+    @else
+        <img src="https://source.unsplash.com/1000x1000/?{{ $product->category->name }}" alt="{{ $product->name }}">
+    @endif
     <p class="text-lg font-semibold">{{ $product->price }}</p>
     <p>{{ $product->sizes }}</p>
     <p>{{ $product->colors }}</p>
