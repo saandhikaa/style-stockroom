@@ -24,7 +24,8 @@
         
         <div class="items-center mb-6">
             <label class="block text-gray-500 font-bold mb-1 pr-4" for="image">Image</label>
-            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('image') ? 'border-red-500' : '' }}" id="image" name="image" type="file" required>
+            <img src="" class="img-prewiew w-40 rounded">
+            <input class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 {{ $errors->has('image') ? 'border-red-500' : '' }}" id="image" name="image" type="file" onchange="previewImage()" required>
             @error('image')
                 <span class="text-red-500 text-xs italic">{{ $message }}</span>
             @enderror
@@ -192,5 +193,20 @@
                 }
             }, true);
         });
+        
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-prewiew');
+            
+            imgPreview.style.display = 'block';
+            
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+            
+            oFReader.onload = function(oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+                imgPreview.style.marginBottom = '8px';
+            }
+        }
     </script>
 @endsection
