@@ -15,7 +15,11 @@
     
     @if ($products->count())
         <div class="container mx-auto my-8 p-8 max-w-2xl border-2 border-blue-400 rounded">
-            <img src="https://source.unsplash.com/1000x1000/?{{ $products[0]->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
+            @if ($products[0]->image)
+                <img src="{{ asset('storage/' . $products[0]->image) }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
+            @else
+                <img src="https://source.unsplash.com/1000x1000/?{{ $products[0]->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
+            @endif
             <h2 class="font-semibold text-2xl text-gray-800 leading-tight"><a href="/products/{{ $products[0]->slug }}" class="text-blue-600 hover:text-blue-700">{{ $products[0]->name }}</a></h2>
             <p class="text-gray-600 mb-2">in <a href="/products?category={{ $products[0]->category->slug }}" class="text-blue-500 hover:text-blue-600">{{ $products[0]->category->name }}</a></p>
             <p class="text-gray-800 font-bold">Rp. {{ number_format($products[0]->price, 0, ',', '.') }}</p>
@@ -25,7 +29,11 @@
         <ul class="grid grid-cols-2 gap-4">
             @foreach ($products->skip(1) as $product)
             <li class="border border-blue-400 rounded p-4">
-                <img src="https://source.unsplash.com/1000x1000/?{{ $product->category->name }}" alt="{{ $products[0]->name }}" class="mb-4 rounded">
+                @if ($product->image)
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="mb-4 rounded">
+                @else
+                    <img src="https://source.unsplash.com/1000x1000/?{{ $product->category->name }}" alt="{{ $product->name }}" class="mb-4 rounded">
+                @endif
                 <h2 class="font-semibold text-xl"><a href="/products/{{ $product->slug }}" class="text-blue-600">{{ $product->name }}</a></h2>
                 <p class="mb-2">in <a href="/products?category={{ $product->category->slug }}" class="text-blue-500">{{ $product->category->name }}</a></p>
                 <p>Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
