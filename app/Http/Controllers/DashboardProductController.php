@@ -36,23 +36,14 @@ class DashboardProductController extends Controller
             'price' => 'required'
         ]);
         
-        if ($request->file('image')) {
-            $validatedData = $request->file('image')->store('product-images');
-        }
+        $validatedData['image'] = $request->file('image') ? $request->file('image')->store('product-images') : '';
+        $validatedData['sizes'] = count($request->sizes) == 1 ? 'One size' : implode(', ', $request->sizes);
+        $validatedData['colors'] = count($request->colors) == 1 ? 'One color' : implode(', ', $request->colors);
+        $validatedData['description'] = empty($request->description) ? 'No description' : $request->description;
         
-        // Additional data to merge with the validated data
-        $additionalData = [
-            'sizes' => count($request->sizes) == 1 ? 'One size' : implode(', ', $request->sizes),
-            'colors' => count($request->colors) == 1 ? 'One color' : implode(', ', $request->colors),
-            'description' => empty($request->description) ? 'No description' : $request->description,
-        ];
-        
-        // Merge additional data with the validated data using the original $request
-        $mergedData = $request->merge($additionalData)->all();
-        Product::create($mergedData);
+        Product::create($validatedData);
         return redirect('/dashboard/products')->with('success', 'New product added successfully!');
     }
-
     
     public function show(Product $product)
     {
