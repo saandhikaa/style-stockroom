@@ -68,24 +68,19 @@ class DashboardProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|min:4|max:255',
             'slug' => 'required|unique:products,slug,' . $product->id,
+            'image' => 'image|file|max:2048',
             'sizes' => 'required|array',
             'colors' => 'required|array',
             'category_id' => 'required',
             'price' => 'required'
         ]);
         
-        // Additional data to merge with the validated data
-        $additionalData = [
-            'sizes' => count($request->sizes) == 1 ? 'One size' : implode(', ', $request->sizes),
-            'colors' => count($request->colors) == 1 ? 'One color' : implode(', ', $request->colors),
-            'description' => empty($request->description) ? 'No description' : $request->description,
-        ];
+        $validatedData['image'] = $request->file('image') ? $request->file('image')->store('product-images') : '';
+        $validatedData['sizes'] = count($request->sizes) == 1 ? 'One size' : implode(', ', $request->sizes);
+        $validatedData['colors'] = count($request->colors) == 1 ? 'One color' : implode(', ', $request->colors);
+        $validatedData['description'] = empty($request->description) ? 'No description' : $request->description;
         
-        // Merge additional data with the validated data using the original $request
-        $mergedData = $request->merge($additionalData)->all();
-        $product->update($mergedData);
-        
-        // Redirect or perform any other actions after updating
+        $product->update($validatedData);
         return redirect('/dashboard/products')->with('success', 'Product updated successfully!');
     }
     
