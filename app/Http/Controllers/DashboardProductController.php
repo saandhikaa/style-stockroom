@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardProductController extends Controller
@@ -75,7 +76,13 @@ class DashboardProductController extends Controller
             'price' => 'required'
         ]);
         
-        $validatedData['image'] = $request->file('image') ? $request->file('image')->store('product-images') : '';
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('product-images');
+        }
+        
         $validatedData['sizes'] = count($request->sizes) == 1 ? 'One size' : implode(', ', $request->sizes);
         $validatedData['colors'] = count($request->colors) == 1 ? 'One color' : implode(', ', $request->colors);
         $validatedData['description'] = empty($request->description) ? 'No description' : $request->description;
