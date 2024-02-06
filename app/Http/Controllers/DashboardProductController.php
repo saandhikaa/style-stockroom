@@ -37,7 +37,14 @@ class DashboardProductController extends Controller
             'price' => 'required'
         ]);
         
-        $validatedData['image'] = $request->file('image') ? $request->file('image')->store('product-images') : '';
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/product');
+            $image->move($destinationPath, $name);
+            $validatedData['image'] = 'product/' . $name;
+        }
+        
         $validatedData['sizes'] = count($request->sizes) == 1 ? 'One size' : implode(', ', $request->sizes);
         $validatedData['colors'] = count($request->colors) == 1 ? 'One color' : implode(', ', $request->colors);
         $validatedData['description'] = empty($request->description) ? 'No description' : $request->description;
