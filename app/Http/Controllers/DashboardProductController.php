@@ -83,11 +83,21 @@ class DashboardProductController extends Controller
             'price' => 'required'
         ]);
         
-        if ($request->file('image')) {
+        if ($request->hasFile('image')) {
+            // Delete the old image file if it exists
             if ($request->oldImage) {
-                Storage::delete($request->oldImage);
+                $oldImagePath = public_path('/images/' . $request->oldImage);
+                if (file_exists($oldImagePath)) {
+                    unlink($oldImagePath);
+                }
             }
-            $validatedData['image'] = $request->file('image')->store('product-images');
+            
+            // Store the new image file in the public directory
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/images/product');
+            $image->move($destinationPath, $name);
+            $validatedData['image'] = 'product/' . $name;
         }
         
         $validatedData['sizes'] = count($request->sizes) == 1 ? 'One size' : implode(', ', $request->sizes);
