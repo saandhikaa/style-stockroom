@@ -31,7 +31,7 @@ Route::get('/dashboard', function() {
 })->middleware('auth');
 
 Route::get('/dashboard/products/generateSlug', [DashboardProductController::class, 'generateSlug']);
-Route::resource('/dashboard/products', DashboardProductController::class)->middleware('auth');
+Route::resource('/dashboard/products', DashboardProductController::class)->middleware('admin');
 
 Route::get('/categories', function (Category $category) {
     return view('categories', [
