@@ -17,7 +17,7 @@
     </ul>
     
     @if ($product->image)
-        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="rounded-xl border-2 border-blue-500">
+        <img src="{{ asset('images/' . $product->image) }}" alt="{{ $product->name }}" class="rounded-xl border-2 border-blue-500">
     @else
         <img src="https://source.unsplash.com/1000x1000/?{{ $product->category->name }}" alt="{{ $product->name }}" class="rounded-xl border-2 border-blue-500">
     @endif
