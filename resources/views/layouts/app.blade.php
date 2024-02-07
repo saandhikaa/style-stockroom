@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    @include('partials.navbar')
+    @include('partials.app.navbar')
     
     <main class="p-5">
         @yield('main')
