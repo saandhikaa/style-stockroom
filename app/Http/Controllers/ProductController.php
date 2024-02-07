@@ -14,14 +14,14 @@ class ProductController extends Controller {
             $title = ' in ' . $category->name;
         }
         
-        return view('product', [
+        return view('products.index', [
             'title' => 'All Product' . $title,
             'products' => Product::latest()->filter(request(['search', 'category']))->paginate(6)->withQueryString()
         ]);
     }
     
     public function detail (Product $product) {
-        return view('detail', [
+        return view('products.detail', [
             'title' => 'STYLE STOCKROOM | Product detail',
             'product' => $product
         ]);
