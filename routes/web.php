@@ -10,10 +10,23 @@ use App\Models\Product;
 use App\Models\Category;
 
 Route::get('/', function () {
-    return view('home', [
+    return view('pages.home', [
         'title' => 'STYLE STOCKROOM'
     ]);
 });
+
+Route::get('/contact', function () {
+    return view('pages.contact', [
+        'title' => 'STYLE STOCKROOM | Contact'
+    ]);
+});
+
+Route::get('/about', function () {
+    return view('pages.about', [
+        'title' => 'STYLE STOCKROOM | About'
+    ]);
+});
+
 
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product:slug}', [ProductController::class, 'detail']);
@@ -43,17 +56,5 @@ Route::get('/categories/{category:slug}', function (Category $category) {
     return view('product', [
         'title' => 'Product in ' . $category->name,
         'products' => $category->product->load('category')
-    ]);
-});
-
-Route::get('/contact', function () {
-    return view('contact', [
-        'title' => 'STYLE STOCKROOM | Contact'
-    ]);
-});
-
-Route::get('/about', function () {
-    return view('about', [
-        'title' => 'STYLE STOCKROOM | About'
     ]);
 });
