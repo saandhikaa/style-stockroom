@@ -31,6 +31,14 @@ Route::get('/about', function () {
 Route::get('/products', [ProductController::class, 'index']);
 Route::get('/products/{product:slug}', [ProductController::class, 'detail']);
 
+Route::get('/categories', function (Category $category) {
+    return view('categories.index', [
+        'title' => 'STYLE STOCKROOM | Categories',
+        'categories' => Category::all()
+    ]);
+});
+
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 
@@ -45,16 +53,3 @@ Route::get('/dashboard', function() {
 
 Route::get('/dashboard/products/generateSlug', [DashboardProductController::class, 'generateSlug']);
 Route::resource('/dashboard/products', DashboardProductController::class)->middleware('admin');
-
-Route::get('/categories', function (Category $category) {
-    return view('categories', [
-        'title' => 'STYLE STOCKROOM | Categories',
-        'categories' => Category::all()
-    ]);
-});
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('product', [
-        'title' => 'Product in ' . $category->name,
-        'products' => $category->product->load('category')
-    ]);
-});
