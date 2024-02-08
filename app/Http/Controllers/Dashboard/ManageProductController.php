@@ -14,14 +14,14 @@ class ManageProductController extends Controller
 {
     public function index()
     {
-        return view('dashboard.products.index', [
+        return view('dashboard.manage-products.index', [
             'products' => Product::all()
         ]);
     }
     
     public function create()
     {
-        return view('dashboard.products.create', [
+        return view('dashboard.manage-products.create', [
             'categories' => Category::all()
         ]);
     }
@@ -51,32 +51,32 @@ class ManageProductController extends Controller
         $validatedData['description'] = empty($request->description) ? 'No description' : $request->description;
         
         Product::create($validatedData);
-        return redirect('/dashboard/products')->with('success', 'New product added successfully!');
+        return redirect('/dashboard/manage-products')->with('success', 'New product added successfully!');
     }
     
-    public function show(Product $product)
+    public function show(Product $manage_product)
     {
-        return view('dashboard.products.show', [
-            'product' => $product
+        return view('dashboard.manage-products.show', [
+            'product' => $manage_product
         ]);
     }
     
-    public function edit(Product $product)
+    public function edit(Product $manage_product)
     {
-        $product->sizesArray = $product->sizes ? explode(',', $product->sizes) : [];
-        $product->colorsArray = $product->colors ? explode(',', $product->colors) : [];
+        $manage_product->sizesArray = $manage_product->sizes ? explode(',', $manage_product->sizes) : [];
+        $manage_product->colorsArray = $manage_product->colors ? explode(',', $manage_product->colors) : [];
         
-        return view('dashboard.products.edit', [
-            'product' => $product,
+        return view('dashboard.manage-products.edit', [
+            'product' => $manage_product,
             'categories' => Category::all()
         ]);
     }
     
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Product $manage_product)
     {
         $validatedData = $request->validate([
             'name' => 'required|min:4|max:255',
-            'slug' => 'required|unique:products,slug,' . $product->id,
+            'slug' => 'required|unique:products,slug,' . $manage_product->id,
             'image' => 'image|file|max:2048',
             'sizes' => 'required|array',
             'colors' => 'required|array',
@@ -105,20 +105,20 @@ class ManageProductController extends Controller
         $validatedData['colors'] = count($request->colors) == 1 ? 'One color' : implode(', ', $request->colors);
         $validatedData['description'] = empty($request->description) ? 'No description' : $request->description;
         
-        $product->update($validatedData);
-        return redirect('/dashboard/products')->with('success', 'Product updated successfully!');
+        $manage_product->update($validatedData);
+        return redirect('/dashboard/manage-products')->with('success', 'Product updated successfully!');
     }
     
-    public function destroy(Product $product)
+    public function destroy(Product $manage_product)
     {
-        if ($product->image) {
-            $imagePath = public_path('/images/' . $product->image);
+        if ($manage_product->image) {
+            $imagePath = public_path('/images/' . $manage_product->image);
             if (file_exists($imagePath)) {
                 unlink($imagePath);
             }
         }
-        Product::destroy($product->id);
-        return redirect('/dashboard/products')->with('success', 'Product deleted successfully!');
+        Product::destroy($manage_product->id);
+        return redirect('/dashboard/manage-products')->with('success', 'Product deleted successfully!');
     }
     
     public function generateSlug (Request $request)
