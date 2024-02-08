@@ -9,7 +9,7 @@
         <li><a href="/dashboard" class="px-4 py-2 text-left hover:bg-blue-500 hover:text-white w-full block {{ Request::is('dashboard') ? 'font-semibold text-blue-500' : 'text-gray-800' }}">Dashboard</a></li>
         
         @can('admin')
-            <li><a href="/dashboard/products" class="px-4 py-2 text-left hover:bg-blue-500 hover:text-white w-full block {{ Request::is('dashboard/products*') ? 'font-semibold text-blue-500' : 'text-gray-800' }} ">Product</a></li>
+            <li><a href="/dashboard/manage-products" class="px-4 py-2 text-left hover:bg-blue-500 hover:text-white w-full block {{ Request::is('dashboard/manage-products*') ? 'font-semibold text-blue-500' : 'text-gray-800' }} ">Manage Product</a></li>
         @endcan
     </ul>
     <form method="POST" action="/logout" class="mb-4">
