@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
 
-class DashboardProductController extends Controller
+class ManageProductController extends Controller
 {
     public function index()
     {
