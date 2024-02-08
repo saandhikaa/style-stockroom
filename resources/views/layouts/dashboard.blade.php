@@ -9,12 +9,12 @@
 </head>
 
 <body>
-    @include('partials.user.header')
+    @include('partials.dashboard.header')
     
     <main class="p-4">
         @yield('main')
     </main>
     
-    @include('partials.user.sidebar')
+    @include('partials.dashboard.sidebar')
 </body>
 </html>
