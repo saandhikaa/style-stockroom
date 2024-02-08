@@ -1,5 +1,5 @@
-@extends('dashboard.layouts.app')
+@extends('layouts.dashboard')
 
 @section('main')
-    <h1>Welcome, adel!</h1>
+    <h1>Welcome, {{ Auth::user()->name }}!</h1>
 @endsection
