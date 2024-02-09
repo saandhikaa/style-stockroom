@@ -1,9 +1,9 @@
-@extends('dashboard.layouts.app')
+@extends('layouts.dashboard')
 
 @section('main')
     <h1 class="text-2xl mt-4">Add new product</h1>
 
-    <form action="/dashboard/products" method="post" class="w-full mt-5" enctype="multipart/form-data">
+    <form action="/dashboard/manage-products" method="post" class="w-full mt-5" enctype="multipart/form-data">
         @csrf
         
         <div class="items-center mb-6">
@@ -93,7 +93,7 @@
         const slug = document.querySelector('#slug');
         
         name.addEventListener('change', function() {
-            fetch('/dashboard/products/generateSlug?data=' + name.value)
+            fetch('/dashboard/manage-products/generateSlug?data=' + name.value)
                 .then(response => response.json())
                 .then(data => slug.value = data.slug)
         });
