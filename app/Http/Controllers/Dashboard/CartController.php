@@ -21,4 +21,15 @@ class CartController extends Controller
         
         return back()->with('success', "Product added to cart successfully!");
     }
+    
+    public function remove (Request $request, Cart $cart)
+    {
+        if (Auth::id() !== $cart->user_id) {
+            return back()->with('error', "You do not have permission to remove this item.");
+        }
+        
+        $cart->delete();
+        
+        return back()->with('success', "Product removed from cart successfully!");
+    }
 }
