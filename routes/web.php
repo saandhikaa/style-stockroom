@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\Dashboard\CartController;
 use App\Http\Controllers\Dashboard\ManageProductController;
 
 use App\Models\Product;
@@ -51,5 +52,7 @@ Route::get('/dashboard', function() {
     return view('dashboard.index');
 })->middleware('auth');
 
-Route::get('/dashboard/manage-products/generateSlug', [ManageProductController::class, 'generateSlug']);
 Route::resource('/dashboard/manage-products', ManageProductController::class)->middleware('admin');
+
+Route::get('/dashboard/manage-products/generateSlug', [ManageProductController::class, 'generateSlug']);
+Route::get('/dashboard/cart', [CartController::class, 'view'])->middleware('auth');
