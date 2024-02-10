@@ -32,4 +32,10 @@ class CartController extends Controller
         
         return back()->with('success', "Product removed from cart successfully!");
     }
+
+    public function view (Request $request)
+    {
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        return view('dashboard.cart.view', ['cartItems' => $cartItems]);
+    }
 }
